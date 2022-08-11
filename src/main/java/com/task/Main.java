@@ -1,31 +1,30 @@
-package t.bouquet;
+package com.task;
 
-import t.bouquet.accesories.Accessory;
-import t.bouquet.flowers.*;
+import com.task.accessories.Accessory;
+import com.task.bouquet.Bouquet;
+import com.task.flowers.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
 
-        ArrayList<Flower> flowers = new ArrayList<>();
+        List<ISellFlower> flowers = new ArrayList<>();
         flowers.add(new Poppy(10, "Red", 86, 12.5));
         flowers.add(new Rose(15, "White", 94, 13.4));
         flowers.add(new Dandelion(12, "White", 91, 10.2));
 
-        ArrayList<Accessory> accessories = new ArrayList<>();
+        List<Accessory> accessories = new ArrayList<>();
         accessories.add(new Accessory(24, "Ribbon", "Green"));
         accessories.add(new Accessory(20, "Cover", "White"));
 
         Bouquet bouquet = new Bouquet(flowers, accessories);
 
-        //bouquet.print();
-        //System.out.println("Bouquet price: " + bouquet.getPrice());
-
         bouquet.sort();
-        bouquet.print();
+//        bouquet.print();
+        System.out.println(bouquet);
         System.out.println("Bouquet price: " + bouquet.getPrice());
         System.out.println("Bouquet freshness: " + bouquet.freshness());
 
@@ -34,6 +33,10 @@ public class Main {
         int a, b;
         a = scanner.nextInt();
         b = scanner.nextInt();
-        System.out.println(bouquet.findHeight(a, b));
+        System.out.println("Found flower: " + bouquet.findFlowerWithHeight(a, b));
+
+        bouquet.addFlower(new PearCactus(120, "Yellow", 100, 8));
+        System.out.println(bouquet);
+
     }
 }

@@ -1,15 +1,18 @@
-package t.bouquet;
+package com.task.bouquet;
 
-import t.bouquet.accesories.Accessory;
-import t.bouquet.flowers.Flower;
+import com.task.flowers.IFlower;
+import com.task.flowers.ISellFlower;
+import com.task.gen.ISellable;
+import com.task.accessories.Accessory;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Bouquet {
-    private ArrayList<Flower> flowers;
-    private ArrayList<Accessory> accessories;
+public class Bouquet implements ISellable {
+    private List<ISellFlower> flowers;
+    private List<Accessory> accessories;
     private double price = 0.0;
 
     public Bouquet() {
@@ -17,24 +20,24 @@ public class Bouquet {
         accessories = new ArrayList<>();
     }
 
-    public Bouquet(ArrayList<Flower> flowers) {
+    public Bouquet(List<ISellFlower> flowers) {
         this.flowers = flowers;
         this.accessories = new ArrayList<>();
-        this._price();
+        this.setupPrice();
     }
 
-    public Bouquet(ArrayList<Flower> flowers, ArrayList<Accessory> accessories) {
+    public Bouquet(List<ISellFlower> flowers, List<Accessory> accessories) {
         this.flowers = flowers;
         this.accessories = accessories;
-        this._price();
+        this.setupPrice();
     }
 
-    public void addFlower(Flower flower) {
+    public void addFlower(ISellFlower flower) {
         flowers.add(flower);
         price += flower.getPrice();
     }
 
-    public void removeFlower(Flower flower) {
+    public void removeFlower(ISellFlower flower) {
         flowers.remove(flower);
         price -= flower.getPrice();
     }
@@ -50,11 +53,11 @@ public class Bouquet {
     }
 
     public void sort() {
-        Comparator<Flower> c = new Flower.FlowerCFresh();
+        Comparator<IFlower> c = new IFlower.ComparatorFlowerFresh();
         Collections.sort(this.flowers, c);
     }
 
-    private void _price() {
+    private void setupPrice() {
         for (int i = 0; i < flowers.size(); i++) {
             price += flowers.get(i).getPrice();
         }
@@ -76,6 +79,20 @@ public class Bouquet {
         return fresh / i;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("/Flowers: ");
+        for (int i = 0; i < flowers.size(); i++) {
+            sb.append(flowers.get(i).getName()).append(", ");
+        }
+        sb.append("/Accessories: ");
+        for (int i = 0; i < accessories.size(); i++) {
+            sb.append(accessories.get(i).getName()).append(", ");
+        }
+        return sb.toString();
+    }
+
     public void print() {
         System.out.println("\nFlowers:");
         for (int i = 0; i < flowers.size(); i++) {
@@ -87,11 +104,11 @@ public class Bouquet {
         }
     }
 
-    public Flower findHeight(double a, double b) {
+    public ISellFlower findFlowerWithHeight(double min, double max) {
         double h;
         for (int i = 0; i < flowers.size(); i++) {
             h = flowers.get(i).getHeight();
-            if (h >= a && h <= b) {
+            if (h >= min && h <= max) {
                 return flowers.get(i);
             }
         }

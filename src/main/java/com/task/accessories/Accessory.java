@@ -1,15 +1,18 @@
-package t.bouquet.accesories;
+package com.task.accessories;
 
-import java.util.Objects;
+import com.task.gen.ISellable;
 
-public class Accessory {
+public class Accessory implements ISellable {
     private double price;
     private String name;
     private String color;
 
-    public Accessory(double price, String name, String color) {
-        this.price = price;
+    public Accessory(double price, String name, String color) throws IllegalArgumentException {
+        if (price < 0) {
+            throw new IllegalArgumentException("Invalid price (less than 0).");
+        }
         this.name = name;
+        this.price = price;
         this.color = color;
     }
 
