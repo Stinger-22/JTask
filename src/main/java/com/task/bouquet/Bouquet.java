@@ -66,6 +66,14 @@ public class Bouquet implements ISellable {
         }
     }
 
+    public List<ISellFlower> getFlowers() {
+        return flowers;
+    }
+
+    public List<Accessory> getAccessories() {
+        return accessories;
+    }
+
     public double getPrice() {
         return this.price;
     }

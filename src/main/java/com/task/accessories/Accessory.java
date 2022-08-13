@@ -8,7 +8,7 @@ public class Accessory implements ISellable {
     private String color;
 
     public Accessory(double price, String name, String color) throws IllegalArgumentException {
-        if (price < 0) {
+        if (price <= 0) {
             throw new IllegalArgumentException("Invalid price (less than 0).");
         }
         this.name = name;

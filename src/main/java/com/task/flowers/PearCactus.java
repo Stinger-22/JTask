@@ -1,11 +1,11 @@
 package com.task.flowers;
 
-public class PearCactus extends Flower {
+public class PearCactus extends Flower implements ISellFlower {
     private final static String name = "Pear Cactus";
     private static final boolean leaves = false;
     private static final boolean spikes = true;
 
-    public PearCactus(double price, String color, int fresh, double height) throws IllegalArgumentException {
+    public PearCactus(double price, String color, int fresh, double height) {
         super(price, color, fresh, height);
     }
 

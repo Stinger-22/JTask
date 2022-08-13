@@ -2,7 +2,9 @@ package com.task.flowers;
 
 import com.task.gen.Plant;
 
-public abstract class Flower extends Plant implements ISellFlower {
+import java.util.Objects;
+
+public class Flower extends Plant implements IFlower {
     private double price;
     private String color;
     private int fresh;   // 0-100
@@ -51,8 +53,23 @@ public abstract class Flower extends Plant implements ISellFlower {
     }
 
     @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Flower)) return false;
+        Flower flower = (Flower) o;
+        return Double.compare(flower.price, price) == 0 && fresh == flower.fresh && color.equals(flower.color) &&
+               Objects.equals(this.getName(), ((Flower) o).getName()) &&
+               Objects.equals(this.isLeaves(), ((Flower) o).isLeaves()) &&
+               Objects.equals(this.isSpikes(), ((Flower) o).isSpikes());
+    }
+
+    @Override
     public String toString() {
         return "Flower{" + "price=" + price + ", color='" + color + '\'' + ", fresh=" + fresh + "} " + super.toString();
     }
-
 }

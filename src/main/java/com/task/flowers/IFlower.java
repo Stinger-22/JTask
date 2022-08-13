@@ -7,6 +7,8 @@ public interface IFlower {
     String getColor();
     int getFresh();
     double getHeight();
+    boolean isLeaves();
+    boolean isSpikes();
 
     class ComparatorFlowerFresh implements Comparator<IFlower> {
         @Override

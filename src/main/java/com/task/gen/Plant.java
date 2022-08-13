@@ -1,13 +1,13 @@
 package com.task.gen;
 
-public abstract class Plant {
+public class Plant {
     protected static final boolean leaves = true;
     protected static final boolean spikes = false;
     private double height;
 
     public Plant(double height) throws IllegalArgumentException {
         if (!setHeight(height)) {
-            throw new IllegalArgumentException("Invalid price (less than 0).");
+            throw new IllegalArgumentException("Invalid height (less than 0).");
         }
     }
 

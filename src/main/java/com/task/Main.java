@@ -23,7 +23,6 @@ public class Main {
         Bouquet bouquet = new Bouquet(flowers, accessories);
 
         bouquet.sort();
-//        bouquet.print();
         System.out.println(bouquet);
         System.out.println("Bouquet price: " + bouquet.getPrice());
         System.out.println("Bouquet freshness: " + bouquet.freshness());
@@ -38,5 +37,15 @@ public class Main {
         bouquet.addFlower(new PearCactus(120, "Yellow", 100, 8));
         System.out.println(bouquet);
 
+//        List<ISellFlower> flowers1 = new ArrayList<>();
+//        flowers1.add(new Poppy(10, "Red", 86, 12.5));
+//        flowers1.add(new Rose(15, "White", 94, 13.4));
+//        flowers1.add(new Dandelion(12, "White", 91, 10.2));
+//        System.out.println("Test: " + flowers1.equals(bouquet.getFlowers()));
+
+        IFlower test1 = flowers.get(0);
+        System.out.println(test1.getName());
+        test1 = flowers.get(1);
+        System.out.println(test1.getName());
     }
 }

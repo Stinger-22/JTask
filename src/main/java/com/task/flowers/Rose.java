@@ -1,6 +1,6 @@
 package com.task.flowers;
 
-public class Rose extends Flower {
+public class Rose extends Flower implements ISellFlower {
     private final static String name = "Rose";
     private static final boolean spikes = true;
     public Rose(double price, String color, int fresh, double height) {

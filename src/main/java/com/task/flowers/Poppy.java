@@ -1,6 +1,6 @@
 package com.task.flowers;
 
-public class Poppy extends Flower {
+public class Poppy extends Flower implements ISellFlower {
     private final static String name = "Poppy";
     public Poppy(double price, String color, int fresh, double height) {
         super(price, color, fresh, height);
