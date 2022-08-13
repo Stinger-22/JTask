@@ -4,7 +4,7 @@ import com.task.gen.Plant;
 
 import java.util.Objects;
 
-public class Flower extends Plant implements IFlower {
+public class Flower extends Plant implements ISellFlower {
     private double price;
     private String color;
     private int fresh;   // 0-100
