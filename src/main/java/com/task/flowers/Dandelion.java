@@ -1,17 +1,17 @@
 package com.task.flowers;
 
 public class Dandelion extends Flower implements ISellFlower {
-    private final static String name = "Dandelion";
+    private final static String NAME = "Dandelion";
     public Dandelion(double price, String color, int fresh, double height) {
         super(price, color, fresh, height);
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 
     @Override
     public String toString() {
-        return "name=" + name + ", spikes=" + spikes + ", leaves=" + leaves + " " + super.toString();
+        return "name=" + NAME + ", spikes=" + SPIKES + ", leaves=" + LEAVES + " " + super.toString();
     }
 }

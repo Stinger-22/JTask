@@ -2,6 +2,7 @@ package com.task.bouquet;
 
 import com.task.flowers.IFlower;
 import com.task.flowers.ISellFlower;
+import com.task.gen.IPrintable;
 import com.task.gen.ISellable;
 import com.task.accessories.Accessory;
 
@@ -9,8 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class Bouquet implements ISellable {
+public class Bouquet implements ISellable, IPrintable {
     private List<ISellFlower> flowers;
     private List<Accessory> accessories;
     private double price = 0.0;
@@ -112,14 +115,8 @@ public class Bouquet implements ISellable {
         }
     }
 
-    public ISellFlower findFlowerWithHeight(double min, double max) {
-        double h;
-        for (int i = 0; i < flowers.size(); i++) {
-            h = flowers.get(i).getHeight();
-            if (h >= min && h <= max) {
-                return flowers.get(i);
-            }
-        }
-        return null;
+    public List<ISellFlower> findFlowersWithHeight(double min, double max) {
+        Stream<ISellFlower> sflowers = flowers.stream();
+        return sflowers.filter(flower -> (flower.getHeight() >= min && flower.getHeight() <= max)).collect(Collectors.toList());
     }
 }

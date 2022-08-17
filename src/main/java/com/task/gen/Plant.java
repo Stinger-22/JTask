@@ -1,13 +1,17 @@
 package com.task.gen;
 
-public class Plant {
-    protected static final boolean leaves = true;
-    protected static final boolean spikes = false;
-    private double height;
+import com.task.exception.InvalidHeightException;
 
-    public Plant(double height) throws IllegalArgumentException {
+import java.util.Objects;
+
+public class Plant {
+    protected static final boolean LEAVES = true;
+    protected static final boolean SPIKES = false;
+    protected double height;
+
+    public Plant(double height) throws InvalidHeightException {
         if (!setHeight(height)) {
-            throw new IllegalArgumentException("Invalid height (less than 0).");
+            throw new InvalidHeightException(height);
         }
     }
 
@@ -24,15 +28,23 @@ public class Plant {
     }
 
     public boolean isLeaves() {
-        return leaves;
+        return LEAVES;
     }
 
     public boolean isSpikes() {
-        return spikes;
+        return SPIKES;
     }
 
     @Override
     public String toString() {
         return "Plant{" + "height=" + height + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Plant)) return false;
+        Plant plant = (Plant) o;
+        return Double.compare(plant.height, height) == 0;
     }
 }

@@ -1,5 +1,6 @@
 package com.task.accessories;
 
+import com.task.exception.InvalidPriceException;
 import com.task.gen.ISellable;
 
 public class Accessory implements ISellable {
@@ -7,9 +8,9 @@ public class Accessory implements ISellable {
     private String name;
     private String color;
 
-    public Accessory(double price, String name, String color) throws IllegalArgumentException {
+    public Accessory(double price, String name, String color) throws InvalidPriceException {
         if (price <= 0) {
-            throw new IllegalArgumentException("Invalid price (less than 0).");
+            throw new InvalidPriceException(price);
         }
         this.name = name;
         this.price = price;

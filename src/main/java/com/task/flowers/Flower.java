@@ -1,5 +1,8 @@
 package com.task.flowers;
 
+import com.task.exception.InvalidFreshException;
+import com.task.exception.InvalidHeightException;
+import com.task.exception.InvalidPriceException;
 import com.task.gen.Plant;
 
 import java.util.Objects;
@@ -9,13 +12,14 @@ public class Flower extends Plant implements ISellFlower {
     private String color;
     private int fresh;   // 0-100
 
-    public Flower(double price, String color, int fresh, double height) throws IllegalArgumentException {
+    public Flower(double price, String color, int fresh, double height)
+            throws InvalidHeightException, InvalidFreshException, InvalidPriceException {
         super(height);
         if (!setFresh(fresh)) {
-            throw new IllegalArgumentException("Invalid freshness (not in range 0-100).");
+            throw new InvalidFreshException(fresh);
         }
         if (!setPrice(price)) {
-            throw new IllegalArgumentException("Invalid price (less than 0).");
+            throw new InvalidPriceException(price);
         }
         this.color = color;
     }
@@ -62,7 +66,8 @@ public class Flower extends Plant implements ISellFlower {
         if (this == o) return true;
         if (!(o instanceof Flower)) return false;
         Flower flower = (Flower) o;
-        return Double.compare(flower.price, price) == 0 && fresh == flower.fresh && color.equals(flower.color) &&
+        return Double.compare(flower.height, height) == 0 && Double.compare(flower.price, price) == 0 &&
+               fresh == flower.fresh && color.equals(flower.color) &&
                Objects.equals(this.getName(), ((Flower) o).getName()) &&
                Objects.equals(this.isLeaves(), ((Flower) o).isLeaves()) &&
                Objects.equals(this.isSpikes(), ((Flower) o).isSpikes());
@@ -70,6 +75,7 @@ public class Flower extends Plant implements ISellFlower {
 
     @Override
     public String toString() {
-        return "Flower{" + "price=" + price + ", color='" + color + '\'' + ", fresh=" + fresh + "} " + super.toString();
+        return "Flower{" + "price=" + price + ", color='" + color + '\'' + ", fresh=" + fresh +
+               ", height=" + height + "} ";
     }
 }

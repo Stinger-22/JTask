@@ -1,5 +1,9 @@
 package com.task.flowers;
 
+import com.task.exception.InvalidFreshException;
+import com.task.exception.InvalidHeightException;
+import com.task.exception.InvalidPriceException;
+import com.task.gen.Plant;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -13,68 +17,18 @@ public class FlowerTest {
     }
 
     @Test
-    public void flowerConstructorHeightTest() {
+    public void flowerConstructorTest()
+            throws InvalidHeightException, InvalidFreshException, InvalidPriceException {
         try {
             Flower flower1 = new Flower(10, "White", 5, -1);
-            fail("Exception \"IllegalArgumentException\" must've been thrown. Height of flower is negative number in constructor!");
-        }
-        catch (IllegalArgumentException exception) {
-            if (!exception.getMessage().equals("Invalid height (less than 0).")) {
-                fail("Unexpected exception message. Must've been \"Invalid height (less than 0).\"");
-            }
-        }
-        try {
             Flower flower2 = new Flower(10, "White", 43, 0);
-            fail("Exception \"IllegalArgumentException\" must've been thrown. Height of flower is zero in constructor!");
+            Flower flower3 = new Flower(-7, "White", 25, 6);
+            Flower flower4 = new Flower(0, "White", 5, 11);
+            Flower flower5 = new Flower(1, "White", -4, 9);
+            Flower flower6 = new Flower(5, "White", 101, 10);
+            fail("Exception \"Invalid [Height, Fresh, Price] Exception\" must've been thrown");
         }
-        catch (IllegalArgumentException exception) {
-            if (!exception.getMessage().equals("Invalid height (less than 0).")) {
-                fail("Unexpected exception message. Must've been \"Invalid height (less than 0).\"");
-            }
-        }
-    }
-
-    @Test
-    public void flowerConstructorPriceTest() {
-        try {
-            Flower flower1 = new Flower(-7, "White", 25, 6);
-            fail("Exception \"IllegalArgumentException\" must've been thrown. Price of flower is negative number in constructor!");
-        }
-        catch (IllegalArgumentException exception) {
-            if (!exception.getMessage().equals("Invalid price (less than 0).")) {
-                fail("Unexpected exception message. Must've been \"Invalid price (less than 0).\"");
-            }
-        }
-        try {
-            Flower flower2 = new Flower(0, "White", 5, 11);
-            fail("Exception \"IllegalArgumentException\" must've been thrown. Price of flower is zero in constructor!");
-        }
-        catch (IllegalArgumentException exception) {
-            if (!exception.getMessage().equals("Invalid price (less than 0).")) {
-                fail("Unexpected exception message. Must've been \"Invalid price (less than 0).\"");
-            }
-        }
-    }
-
-    @Test
-    public void flowerConstructorFreshTest() {
-        try {
-            Flower flower1 = new Flower(1, "White", -4, 9);
-            fail("Exception \"IllegalArgumentException\" must've been thrown. Flower freshness is less than zero!");
-        }
-        catch (IllegalArgumentException exception) {
-            if (!exception.getMessage().equals("Invalid freshness (not in range 0-100).")) {
-                fail("Unexpected exception message. Must've been \"Invalid freshness (not in range 0-100).\"");
-            }
-        }
-        try {
-            Flower flower2 = new Flower(5, "White", 101, 10);
-            fail("Exception \"IllegalArgumentException\" must've been thrown. Flower freshness is above hundred!");
-        }
-        catch (IllegalArgumentException exception) {
-            if (!exception.getMessage().equals("Invalid freshness (not in range 0-100).")) {
-                fail("Unexpected exception message. Must've been \"Invalid freshness (not in range 0-100).\"");
-            }
+        catch (InvalidHeightException | InvalidFreshException | InvalidPriceException exception) {
         }
     }
 
@@ -96,5 +50,11 @@ public class FlowerTest {
         assertEquals("Flower fresh wasn't set properly with \"setFresh()\" method!", 45, flower.getFresh());
         assertFalse("Flower fresh was set above hundred!", flower.setFresh(101));
         assertFalse("Flower fresh was set below zero!", flower.setFresh(-1));
+    }
+
+    @Test
+    public void flowerCompareTest() {
+        assertEquals(flower, new Flower(25, "Blue", 77, 14));
+        assertNotEquals(flower, new Flower(25, "Green", 77, 14));
     }
 }

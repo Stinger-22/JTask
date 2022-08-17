@@ -36,7 +36,6 @@ public class BouquetTest {
         assertEquals("Price of bouquet didn't change when flower was removed.", 81, bouquet.getPrice(), 0);
     }
 
-
     @Test
     public void bouquetAddRemoveAccessoryTest() {
         Accessory accessory = new Accessory(20, "Balloon", "Red");
@@ -63,7 +62,9 @@ public class BouquetTest {
 
     @Test
     public void findFlowerWithHeightTest() {
-        IFlower flower = new Dandelion(12, "White", 90, 15);
-        assertEquals("Found wrong flower with given height range!", flower, bouquet.findFlowerWithHeight(12, 17));
+        List<ISellFlower> found = new ArrayList<>();
+        found.add(new Rose(15, "White", 100, 11));
+        found.add(new Dandelion(12, "White", 90, 15));
+        assertEquals("Found wrong flowers with given height range!", found, bouquet.findFlowersWithHeight(11, 17));
     }
 }

@@ -32,7 +32,7 @@ public class Main {
         int a, b;
         a = scanner.nextInt();
         b = scanner.nextInt();
-        System.out.println("Found flower: " + bouquet.findFlowerWithHeight(a, b));
+        System.out.println("Found flowers: " + bouquet.findFlowersWithHeight(a, b));
 
         bouquet.addFlower(new PearCactus(120, "Yellow", 100, 8));
         System.out.println(bouquet);

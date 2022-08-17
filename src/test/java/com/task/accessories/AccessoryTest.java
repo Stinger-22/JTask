@@ -1,29 +1,19 @@
 package com.task.accessories;
 
+import com.task.exception.InvalidPriceException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AccessoryTest {
 
     @Test
-    public void AccessoryConstructorTest() {
+    public void AccessoryConstructorTest() throws InvalidPriceException {
         try {
-            Accessory accessory = new Accessory(-1, "Balloon", "Red");
-            fail("Exception \"IllegalArgumentException\" must've been thrown. Price of accessory is negative number in constructor!");
+            Accessory accessory1 = new Accessory(-1, "Balloon", "Red");
+            Accessory accessory2 = new Accessory(0, "Balloon", "Red");
+            fail("Exception \"InvalidPriceException\" must've been thrown. Price of accessory is negative number or zero in constructor!");
         }
-        catch (IllegalArgumentException exception) {
-            if (!exception.getMessage().equals("Invalid price (less than 0).")) {
-                fail("Unexpected exception message. Must've been \"Invalid price (less than 0).\"");
-            }
-        }
-        try {
-            Accessory accessory = new Accessory(0, "Balloon", "Red");
-            fail("Exception \"IllegalArgumentException\" must've been thrown. Price of accessory is zero in constructor!");
-        }
-        catch (IllegalArgumentException exception) {
-            if (!exception.getMessage().equals("Invalid price (less than 0).")) {
-                fail("Unexpected exception message. Must've been \"Invalid price (less than 0).\"");
-            }
+        catch (InvalidPriceException exception) {
         }
     }
 }
