@@ -1,8 +1,8 @@
-package com.task;
+package com.task.one;
 
-import com.task.accessories.Accessory;
-import com.task.bouquet.Bouquet;
-import com.task.flowers.*;
+import com.task.one.accessories.Accessory;
+import com.task.one.bouquet.Bouquet;
+import com.task.one.flowers.*;
 
 import java.util.ArrayList;
 import java.util.List;

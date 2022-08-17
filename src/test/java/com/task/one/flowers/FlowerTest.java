@@ -1,9 +1,8 @@
-package com.task.flowers;
+package com.task.one.flowers;
 
-import com.task.exception.InvalidFreshException;
-import com.task.exception.InvalidHeightException;
-import com.task.exception.InvalidPriceException;
-import com.task.gen.Plant;
+import com.task.one.exception.InvalidFreshException;
+import com.task.one.exception.InvalidHeightException;
+import com.task.one.exception.InvalidPriceException;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,14 +21,25 @@ public class FlowerTest {
         try {
             Flower flower1 = new Flower(10, "White", 5, -1);
             Flower flower2 = new Flower(10, "White", 43, 0);
+            fail("Exception \"InvalidHeightException\" must've been thrown");
+        }
+        catch (InvalidHeightException exception) {
+        }
+        try {
             Flower flower3 = new Flower(-7, "White", 25, 6);
             Flower flower4 = new Flower(0, "White", 5, 11);
+            fail("Exception \"InvalidPriceException\" must've been thrown");
+        }
+        catch (InvalidPriceException exception) {
+        }
+        try {
             Flower flower5 = new Flower(1, "White", -4, 9);
             Flower flower6 = new Flower(5, "White", 101, 10);
-            fail("Exception \"Invalid [Height, Fresh, Price] Exception\" must've been thrown");
+            fail("Exception \"InvalidFreshException\" must've been thrown");
         }
-        catch (InvalidHeightException | InvalidFreshException | InvalidPriceException exception) {
+        catch (InvalidPriceException exception) {
         }
+
     }
 
     @Test

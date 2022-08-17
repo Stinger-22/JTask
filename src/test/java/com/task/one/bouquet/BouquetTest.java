@@ -1,7 +1,7 @@
-package com.task.bouquet;
+package com.task.one.bouquet;
 
-import com.task.accessories.Accessory;
-import com.task.flowers.*;
+import com.task.one.accessories.Accessory;
+import com.task.one.flowers.*;
 import org.junit.Before;
 import org.junit.Test;
 

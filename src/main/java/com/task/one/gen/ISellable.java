@@ -1,4 +1,4 @@
-package com.task.gen;
+package com.task.one.gen;
 
 public interface ISellable {
     double getPrice();

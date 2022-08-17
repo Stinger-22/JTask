@@ -1,10 +1,10 @@
-package com.task.bouquet;
+package com.task.one.bouquet;
 
-import com.task.flowers.IFlower;
-import com.task.flowers.ISellFlower;
-import com.task.gen.IPrintable;
-import com.task.gen.ISellable;
-import com.task.accessories.Accessory;
+import com.task.one.flowers.IFlower;
+import com.task.one.flowers.ISellFlower;
+import com.task.one.gen.IPrintable;
+import com.task.one.gen.ISellable;
+import com.task.one.accessories.Accessory;
 
 import java.util.ArrayList;
 import java.util.List;

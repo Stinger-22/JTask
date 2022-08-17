@@ -1,4 +1,4 @@
-package com.task.exception;
+package com.task.one.exception;
 
 public class InvalidHeightException extends RuntimeException {
     private static final String DESCRIPTION = "Invalid height: less than 0.";

@@ -1,6 +1,6 @@
-package com.task.accessories;
+package com.task.one.accessories;
 
-import com.task.exception.InvalidPriceException;
+import com.task.one.exception.InvalidPriceException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

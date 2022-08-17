@@ -1,9 +1,9 @@
-package com.task.flowers;
+package com.task.one.flowers;
 
-import com.task.exception.InvalidFreshException;
-import com.task.exception.InvalidHeightException;
-import com.task.exception.InvalidPriceException;
-import com.task.gen.Plant;
+import com.task.one.exception.InvalidFreshException;
+import com.task.one.exception.InvalidHeightException;
+import com.task.one.exception.InvalidPriceException;
+import com.task.one.gen.Plant;
 
 import java.util.Objects;
 

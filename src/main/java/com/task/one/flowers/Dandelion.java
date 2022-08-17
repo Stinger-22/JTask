@@ -1,4 +1,4 @@
-package com.task.flowers;
+package com.task.one.flowers;
 
 public class Dandelion extends Flower implements ISellFlower {
     private final static String NAME = "Dandelion";

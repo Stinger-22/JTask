@@ -1,6 +1,6 @@
-package com.task.gen;
+package com.task.one.gen;
 
-import com.task.exception.InvalidHeightException;
+import com.task.one.exception.InvalidHeightException;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

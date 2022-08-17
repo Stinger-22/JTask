@@ -1,4 +1,4 @@
-package com.task.exception;
+package com.task.one.exception;
 
 public class InvalidPriceException extends RuntimeException {
     private static final String DESCRIPTION = "Invalid price: less than 0.";

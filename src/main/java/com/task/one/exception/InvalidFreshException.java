@@ -1,4 +1,4 @@
-package com.task.exception;
+package com.task.one.exception;
 
 public class InvalidFreshException extends RuntimeException {
     private static final String DESCRIPTION = "Invalid freshness: not in range 0-100.";

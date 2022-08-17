@@ -1,8 +1,6 @@
-package com.task.gen;
+package com.task.one.gen;
 
-import com.task.exception.InvalidHeightException;
-
-import java.util.Objects;
+import com.task.one.exception.InvalidHeightException;
 
 public class Plant {
     protected static final boolean LEAVES = true;

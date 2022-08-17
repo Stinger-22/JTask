@@ -1,7 +1,7 @@
-package com.task.accessories;
+package com.task.one.accessories;
 
-import com.task.exception.InvalidPriceException;
-import com.task.gen.ISellable;
+import com.task.one.exception.InvalidPriceException;
+import com.task.one.gen.ISellable;
 
 public class Accessory implements ISellable {
     private double price;
