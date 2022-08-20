@@ -1,5 +1,6 @@
-package com.task.one.exception;
+package com.task.seven.exception;
 
+// Copy of com.task.one.exception.InvalidPriceException
 public class InvalidPriceException extends RuntimeException {
     private static final String DESCRIPTION = "Invalid price: less than 0.";
     private double price;
@@ -15,7 +16,7 @@ public class InvalidPriceException extends RuntimeException {
 
     @Override
     public String toString() {
-        return "InvalidPriceException{" + "price=" + price + "} " + super.toString();
+        return "InvalidPriceException{" + "price=" + price + "} ";
     }
 
     @Override

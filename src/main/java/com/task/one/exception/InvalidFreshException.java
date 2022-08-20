@@ -15,7 +15,7 @@ public class InvalidFreshException extends RuntimeException {
 
     @Override
     public String toString() {
-        return "InvalidHeightException{" + "fresh=" + fresh + "} " + super.toString();
+        return "InvalidFreshException{" + "fresh=" + fresh + "} ";
     }
 
     @Override
