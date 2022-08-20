@@ -14,8 +14,6 @@ public class Jewelry extends Equipment {
 
     @Override
     public String toString() {
-        return "Jewelry{" +
-                "matter='" + matter + '\'' +
-                "} " + super.toString();
+        return "Jewelry{" + "matter='" + matter + '\'' + "} " + super.toString();
     }
 }

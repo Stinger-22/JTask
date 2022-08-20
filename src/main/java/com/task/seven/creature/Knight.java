@@ -42,6 +42,26 @@ public class Knight extends Human {
         return damage;
     }
 
+    public double getCarryCap() {
+        return carryCap;
+    }
+
+    public double getCarryNow() {
+        return carryNow;
+    }
+
+    public Ring getRing() {
+        return ring;
+    }
+
+    public Amulet getAmulet() {
+        return amulet;
+    }
+
+    public Equipment getEquipPiece(BodyParts part) {
+        return this.equipment.get(part);
+    }
+
     public boolean equip(Armor armor) {
         if (this.canGrab(armor)) {
             BodyParts part = armor.getPurpose();
@@ -91,7 +111,10 @@ public class Knight extends Human {
     public boolean dropWeapon()  {
         Weapon weapon = (Weapon) equipment.get(BodyParts.RIGHT_HAND);
         if (weapon == null) {
-            return false;
+            weapon = (Weapon) equipment.get(BodyParts.LEFT_HAND);
+            if (weapon == null) {
+                return false;
+            }
         }
         this.carryNow -= weapon.getWeight();
         this.equipment.put(BodyParts.RIGHT_HAND, null);
@@ -140,7 +163,7 @@ public class Knight extends Human {
 
     public List<Equipment> getEquipment() {
         Stream<Equipment> equipStream = equipment.values().stream();
-        List<Equipment> exportEquip = equipStream.filter(Objects::nonNull).collect(Collectors.toList());
+        List<Equipment> exportEquip = equipStream.distinct().filter(Objects::nonNull).collect(Collectors.toList());
         if (ring != null) {
             exportEquip.add(ring);
         }
@@ -153,7 +176,7 @@ public class Knight extends Human {
     public static class Utils {
         public static List<Equipment> EquipSortWeight(Knight knight) {
             List<Equipment> equip = knight.getEquipment();
-            equip.sort(Comparator.comparingDouble(Equipment::getWeight));
+            equip.sort(new Equipment.ComparatorByWeight());
             return equip;
         }
 

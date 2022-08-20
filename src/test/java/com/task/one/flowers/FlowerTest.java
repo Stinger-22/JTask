@@ -37,7 +37,7 @@ public class FlowerTest {
             Flower flower6 = new Flower(5, "White", 101, 10);
             fail("Exception \"InvalidFreshException\" must've been thrown");
         }
-        catch (InvalidPriceException exception) {
+        catch (InvalidFreshException exception) {
         }
 
     }

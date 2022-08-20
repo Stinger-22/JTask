@@ -1,5 +1,7 @@
 package com.task.seven.equip;
 
+import java.util.Objects;
+
 public class Ring extends Jewelry {
     private String gem;
 
@@ -10,6 +12,16 @@ public class Ring extends Jewelry {
 
     public String getGem() {
         return gem;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ring)) return false;
+        Ring ring = (Ring) o;
+        return getName().equals(ring.getName()) && Double.compare(getWeight(), ring.getWeight()) == 0 &&
+               Double.compare(getPrice(), ring.getPrice()) == 0 && getMatter().equals(ring.getMatter()) &&
+               gem.equals(ring.gem);
     }
 
     @Override

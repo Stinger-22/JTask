@@ -21,6 +21,16 @@ public class Armor extends Equipment {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Armor)) return false;
+        Armor armor = (Armor) o;
+        return getName().equals(armor.getName()) && Double.compare(getWeight(), armor.getWeight()) == 0 &&
+                Double.compare(getPrice(), armor.getPrice()) == 0 && defense == armor.getDefense() &&
+                purpose == armor.getPurpose();
+    }
+
+    @Override
     public String toString() {
         return "Armor{ name=" + getName() + ", weight=" + getWeight() + ", price=" + getPrice() +
                ", defense=" + defense + ", purpose=" + purpose + "} ";
